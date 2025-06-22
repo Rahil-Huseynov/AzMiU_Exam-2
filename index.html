@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ləzzətli Restoran - Şəhərin Ən Yaxşı Yeməkləri</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                🍽️ Ləzzətli Restoran
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Ana Səhifə</a></li>
+                <li><a href="#menu">Menyu</a></li>
+                <li><a href="#order" onclick="showOrderPage()">Mənim Sifarişim</a></li>
+                <li><a href="#favorites">Sevimlilər</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="#favorites" class="icon-btn" title="Sevimlilər">
+                    ❤️
+                    <span class="badge" id="favorites-count">0</span>
+                </a>
+                <a href="#order" class="icon-btn cart-icon" title="Mənim Sifarişim" id="cart-icon" onclick="showOrderPage()">
+                    🛒
+                    <span class="badge" id="order-count">0</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Ana Səhifə -->
+    <div id="home-page">
+        <section class="hero-slider" id="home">
+            <div class="slide slide1 active">
+                <div class="slide-content">
+                    <h2>Ləzzətli Restorana Xoş Gəlmisiniz</h2>
+                    <p>Təzə inqrediyentlərlə ən yaxşı mətbəxi yaşayın</p>
+                    <a href="#menu" class="btn">Menyuya Bax</a>
+                </div>
+            </div>
+            <div class="slide slide2">
+                <div class="slide-content">
+                    <h2>Gündəlik Təzə Xüsusi Yeməklər</h2>
+                    <p>Aşpazımızın məhəbbətlə hazırladığı xüsusi yeməkləri sınayın</p>
+                    <a href="#menu" class="btn">İndi Sifariş Ver</a>
+                </div>
+            </div>
+            <div class="slide slide3">
+                <div class="slide-content">
+                    <h2>Sürətli Çatdırılma</h2>
+                    <p>İsti və təzə yeməklər birbaşa qapınıza çatdırılır</p>
+                    <a href="#menu" class="btn">Sifarişə Başla</a>
+                </div>
+            </div>
+            <div class="slider-nav">
+                <span class="slider-dot active" onclick="currentSlide(1)"></span>
+                <span class="slider-dot" onclick="currentSlide(2)"></span>
+                <span class="slider-dot" onclick="currentSlide(3)"></span>
+            </div>
+        </section>
+
+        <section class="menu-categories">
+            <div class="container">
+                <div class="categories-nav">
+                    <button class="category-btn active" onclick="filterMenu('all')">Bütün Məhsullar</button>
+                    <button class="category-btn" onclick="filterMenu('appetizers')">Qəlyanaltılar</button>
+                    <button class="category-btn" onclick="filterMenu('mains')">Əsas Yeməklər</button>
+                    <button class="category-btn" onclick="filterMenu('desserts')">Şirniyyatlar</button>
+                    <button class="category-btn" onclick="filterMenu('drinks')">İçkilər</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="menu-section" id="menu">
+            <div class="container">
+                <h2 class="section-title">Bizim Menyu</h2>
+                <div class="menu-grid" id="menu-grid"></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Sifariş Səhifəsi -->
+    <div id="order-page" class="page-content" style="display: none;">
+        <section class="order-section">
+            <div class="container">
+                <h1 class="page-title">Mənim Sifarişim</h1>
+                <div id="order-content"></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Sifariş Uğur Animasiyası -->
+    <div id="order-success-animation" class="order-animation-overlay">
+        <div class="animation-content">
+            <div class="success-icon">✅</div>
+            <h2>Sifariş Uğurla Verildi!</h2>
+            <p>Sifarişiniz üçün təşəkkür edirik!</p>
+            <div class="celebration-emojis">
+                <span class="emoji">🎉</span>
+                <span class="emoji">🍕</span>
+                <span class="emoji">🎊</span>
+                <span class="emoji">🍔</span>
+                <span class="emoji">✨</span>
+                <span class="emoji">🥳</span>
+            </div>
+            <div class="delivery-info">
+                <p id="delivery-time">Təxmini çatdırılma: 30-45 dəqiqə</p>
+                <p id="order-total">Cəmi: $0.00</p>
+            </div>
+            <button class="btn" onclick="closeOrderAnimation()">Davam Et</button>
+        </div>
+    </div>
+
+    <!-- Məhsul Silmə Animasiyası -->
+    <div id="remove-item-animation" class="remove-animation-overlay">
+        <div class="remove-animation-content">
+            <div class="remove-icon">🗑️</div>
+            <h2>Məhsul Silindi!</h2>
+            <p id="removed-item-name">Məhsul sifarişinizdən silindi</p>
+            <div class="remove-emojis">
+                <span class="emoji">👋</span>
+                <span class="emoji">💔</span>
+                <span class="emoji">😢</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Uğur Mesajı -->
+    <div id="success-message" class="success-message"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
